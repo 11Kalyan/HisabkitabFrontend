@@ -1,0 +1,29 @@
+# Node/JS
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.package-lock.json
+.parcel-cache/
+.eslintcache
+
+# Builds & caches
+dist/
+build/
+coverage/
+.next/
+out/
+.vite/
+.turbo/
+.cache/
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# Editors/OS
+.DS_Store
+.idea/
+.vscode/
