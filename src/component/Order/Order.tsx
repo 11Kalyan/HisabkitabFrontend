@@ -12,10 +12,6 @@ const Order = () => {
   const [type,setType]=useState("")
 
 
-  useEffect(()=>{
-    console.log(selectcategory)
-    console.log(type)
-  })
   return (
     <>
       <div className="w-full flex flex-col">
@@ -38,8 +34,6 @@ const Order = () => {
         </div>
 
 
-        <h1>Hello</h1>
-        <h2></h2>
 
          
       </div>

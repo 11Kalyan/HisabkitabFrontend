@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux'
 
 import { RxCross2 } from "react-icons/rx";
-import { removeItem } from './Slice/Food_Drink_slice';
+
 
 
 
@@ -13,18 +13,15 @@ const OrderedItems = () => {
   
 
 
-  // Halndle item from the orderlist
-   const haldleremove =(id:number)=>{
-        dispatch(removeItem(id))
-   }
+  // // Halndle item from the orderlist
+  //  const haldleremove =(id:number)=>{
+  //       dispatch(removeItem(id))
+  //  }
 
 
-  const orderedItems=useSelector((state:RootState)=>state.foodDrink.OrderedItems);
+  const OrderedDetails=useSelector((state:RootState)=>state.foodDrink.OrderedDetails);
 
-  useEffect(()=>{
-    console.log(orderedItems)
-
-   },[orderedItems])
+ 
 
   return (
     <div>
@@ -33,7 +30,7 @@ const OrderedItems = () => {
   
 
     {
-      orderedItems.map((item,index)=>(
+      OrderedDetails.map((item,index)=>(
         
         <div 
         key={index}
@@ -45,16 +42,16 @@ const OrderedItems = () => {
             <div className="text-gray-500">{item?.quantity}</div>
           </div>
   
-          {/* Quantity controls */}
+         =
           <div className="flex items-center gap-2">
             
-            {/* <span>{count}</span> */}
+           
             <button
-              onClick={()=>haldleremove(item?.id)}
+            
             
             >
               <RxCross2 />
-            </button>
+            </button> 
           </div>
         </div>
 

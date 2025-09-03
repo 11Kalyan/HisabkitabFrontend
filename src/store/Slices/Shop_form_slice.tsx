@@ -8,7 +8,8 @@ const initialState:ShopFormType ={
     shopname:"",
     location:"",
     phone:0,
-    ownerName:""
+    ownerName:"",
+    
 }
 
 

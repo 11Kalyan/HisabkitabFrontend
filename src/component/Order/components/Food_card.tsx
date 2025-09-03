@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { increaseQuantity, decrementQuantity,addOrder } from "./Slice/Food_Drink_slice";
+import { increaseQuantity, decrementQuantity } from "./Slice/Food_Drink_slice";
 import { RootState } from "@/store";
 import { foodDrinkTypes } from "./types/foodDrink_types";
 import OrderedItems from "./Order_items";
@@ -56,8 +56,8 @@ const FoodCard = ({selectcategory}) => {
               </button>
             </div>
 
-            {/* Add Button */}
-            <button onClick={() => dispatch(addOrder(food.id))}>Add</button>
+            {/* Add Button
+            <button onClick={() => dispatch(addOrder(food.id))}>Add</button> */}
 
           </div>
         </div>

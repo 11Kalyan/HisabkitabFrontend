@@ -13,15 +13,43 @@ import OrderedItems from "../Order_items";
         quantity:1,
         catagory:"chicken",
         
-        type:"food",
-        shopname:["pasupati","garage","Road"]
-        
     },
 
     ],
 
+    shopname:[
+        {
+            id:1,
+            name:"riddhi siddi"
+        }, {
+            id:2,
+            name:"siddi"
+        },
+        {
+            id:3,
+            name:"giddi siddi"
+        },
+        {
+            id:4,
+            name:"riddhi siddi"
+        }
+    ],
 
-    OrderedItems :[]
+
+      OrderedDetails:[
+         {
+            ShopName:"",
+            Food_drink:"",
+            Catagory:"",
+            items:[{
+                name:"",
+                quantity:0,
+                total:0
+            }]
+
+          
+         },
+      ]
 
     
 
@@ -31,28 +59,27 @@ import OrderedItems from "../Order_items";
         name:'foodDrink',
         initialState,
         reducers:{
-    //    this is for for adding items on the orderlist (ordered item)
-            addOrder:(state,action:PayloadAction<number>)=>{
-                const id=action.payload;
-                const item=state.items.find(item=>item.id===id);
-                if(!item)  return;
+   
+            
 
+            setOrderedDetails: (state, action) => {
 
-                const existingOrder =state.OrderedItems.find(item=>item.id===id);
+             
+                const { ShopName,Food_drink,Catagory} = action.payload;
 
-                if(existingOrder){
-                    existingOrder.quantity++
-                }else{
-                    state.OrderedItems.push({...item})
-                }
-
-            },
-
-            removeItem:(state,action:PayloadAction<number>)=>{
-                const id=action.payload
-                state.OrderedItems=state.OrderedItems.filter((item)=>item.id!==id)
-
-            },
+              
+         
+                  state.OrderedDetails.push({
+                    ShopName,
+                    Food_drink: Food_drink || "",
+                    Catagory: Catagory || "",
+                    items: [{ name: "", quantity: 0, total: 0 }]
+                  });
+                
+              
+                console.log("Added shop:", ShopName);
+              },
+         
  
 
 
@@ -75,9 +102,11 @@ import OrderedItems from "../Order_items";
                 }
 
             }
+            ,
+            
 
         }
     })
 
-    export const {increaseQuantity,decrementQuantity,addOrder,removeItem}=foodDrinkSlice.actions
+    export const {increaseQuantity,decrementQuantity,setOrderedDetails}=foodDrinkSlice.actions
     export default foodDrinkSlice.reducer

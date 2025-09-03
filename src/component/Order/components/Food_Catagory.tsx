@@ -1,30 +1,33 @@
 import { Button } from "@/components/ui/button";
+import { RootState } from "@/store";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setOrderedDetails } from "./Slice/Food_Drink_slice";
 
 const Foodcatagory = ({ selectcategory, setSelectCatagory }) => {
 
-  const handleClick = (value: string) => {
-    setSelectCatagory(value);   // ✅ fixed with semicolon
+  const dispatch = useDispatch()
 
-    const frameworks = [
-      { value: "Ridi shiddi", label: "Riddhi " },
-      { value: "Bhim auto parts", label: "Bhim auto parts" },
-      { value: "purbanchal cake parlour", label: "purbanchal cake parlour" },
-      { value: "Hamro bastralaya", label: "Hamro bastralaya" },
-      { value: "Najik ko o khaja ghar", label: "Najik ko o khaja ghar" },
-    ];
-  };
+
+  // This is for update the state  like veg chicken mutton
+  const OrderedDetails = useSelector((state: RootState) => state.foodDrink.OrderedDetails)
+  
 
   return (
     <div className="w-full flex flex-row justify-around flex-end">
       <div>
-        <Button onClick={() => handleClick("veg")}>Veg</Button>
+        <Button 
+        onClick={()=>dispatch(setOrderedDetails( { Catagory:"veg"}))}
+        
+        >Veg</Button>
       </div>
       <div>
-        <Button onClick={() => handleClick("chicken")}>Chicken</Button>
+        <Button 
+       onClick={()=>dispatch(setOrderedDetails( { Catagory:"Chicken"}))}>Chicken</Button>
       </div>
       <div>
-        <Button onClick={() => handleClick("mutton")}>Mutton</Button>
+        <Button onClick={()=>dispatch(setOrderedDetails( { Catagory:"Mutton"}))}>Mutton</Button>
       </div>
     </div>
   );

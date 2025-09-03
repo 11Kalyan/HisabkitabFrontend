@@ -1,9 +1,7 @@
-"use client"
+
 
 import * as React from "react"
 import { Check, ChevronsUpDown } from "lucide-react"
-import Food
-
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -19,65 +17,72 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { useDispatch, useSelector } from "react-redux"
+import { RootState } from "@/store"
+import { setOrderedDetails } from "./Slice/Food_Drink_slice"
+
+const OrderedPlace = () => {
+  const dispatch = useDispatch()
+
+  const shopname = useSelector((state: RootState) => state.foodDrink.shopname)
+
+  // Local state to track selected shop
+  const [selectedShop, setSelectedShop] = React.useState<string>("")
 
 
-const OrderedPlace=()=> {
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
+  // this is the state from the slice to update the items like shopname , foood type and other
+  const OrderedDetails = useSelector((state: RootState) => state.foodDrink.OrderedDetails)
+
+
+  React.useEffect(()=>{
+    console.log(OrderedDetails)
+ 
+  },[OrderedDetails])
+
 
   return (
-      <div className="pl-13">
-        <Popover open={open} onOpenChange={setOpen} >
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="w-[90%] justify-between"
-        >
-          {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select the Shop"}
-          <ChevronsUpDown className="opacity-50" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent 
-  className="w-full p-0 static translate-y-0 shadow-none border-0"
-  align="start"
-  side="bottom"
-  sideOffset={0}
-  avoidCollisions={false}
->
-
-        <Command>
-          <CommandInput placeholder="Search the shop" className="h-9" />
-          <CommandList>
-            <CommandEmpty>No framework found.</CommandEmpty>
-            <CommandGroup>
-              {frameworks.map((framework) => (
-                <CommandItem
-                  key={framework.value}
-                  value={framework.value}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue)
-                    setOpen(false)
-                  }}
-                >
-                  {framework.label}
-                  <Check
-                    className={cn(
-                      "ml-auto",
-                      value === framework.value ? "opacity-100" : "opacity-0"
-                    )}
-                  />
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
-      </div>
+    <div className="pl-13">
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            role="combobox"
+            className="w-[90%] justify-between"
+          >
+            {selectedShop || "Select the Shop"}
+            <ChevronsUpDown className="opacity-50" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-full p-0">
+          <Command>
+            <CommandInput placeholder="Search the shop" className="h-9" />
+            <CommandList>
+              <CommandEmpty>No shop found.</CommandEmpty>
+              <CommandGroup>
+                {shopname.map((shop: any, index) => (
+                  <CommandItem
+                    key={shop.id || index}
+                    value={shop.name}
+                    onSelect={() => {
+                      dispatch(setOrderedDetails({ ShopName: shop.name }));
+                    }}
+                    
+                  >
+                    {shop.name}
+                    <Check
+                      className={cn(
+                        "ml-auto",
+                        selectedShop === shop.name ? "opacity-100" : "opacity-0"
+                      )}
+                    />
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
+    </div>
   )
 }
 
