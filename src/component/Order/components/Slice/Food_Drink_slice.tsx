@@ -8,10 +8,57 @@ import OrderedItems from "../Order_items";
     items: [
     {
         id:1,
+       
         name:"Chowchicken",
         price:200,
         quantity:1,
         catagory:"chicken",
+        type:"Food"
+        
+    },
+    {
+        id:1,
+        name:"momo",
+        price:200,
+        quantity:1,
+        catagory:"veg",
+        type:"Food"
+        
+    },
+    {
+        id:3,
+        name:"Roll",
+        price:200,
+        quantity:1,
+        catagory:"mutton",
+        type:"food"
+        
+    },
+    {
+        id:4,
+        name:"Coca-cola",
+        price:200,
+        quantity:1,
+        catagory:"mutton",
+        type:"drink"
+        
+    },
+    {
+        id:5,
+        name:"Fruitee",
+        price:200,
+        quantity:1,
+        catagory:"mutton",
+        type:"drink"
+        
+    },
+    {
+        id:6,
+        name:"Coca-cola",
+        price:200,
+        quantity:1,
+        catagory:"mutton",
+        type:"drink"
         
     },
 
@@ -36,23 +83,17 @@ import OrderedItems from "../Order_items";
     ],
 
 
-      OrderedDetails:[
+      OrderedDetails:
          {
-            ShopName:"",
-            Food_drink:"",
-            Catagory:"",
-            items:[{
-                name:"",
-                quantity:0,
-                total:0
-            }]
+            id:null ,
+            sname:"",
+           
+          
+            items:[]
 
           
          },
-      ]
-
-    
-
+      
 }
 
     const foodDrinkSlice=createSlice({
@@ -61,52 +102,54 @@ import OrderedItems from "../Order_items";
         reducers:{
    
             
-
             setOrderedDetails: (state, action) => {
+                  
+                state.OrderedDetails={
 
-             
-                const { ShopName,Food_drink,Catagory} = action.payload;
+                    ...state.OrderedDetails,
+                    ...action.payload
+                }
 
-              
-         
-                  state.OrderedDetails.push({
-                    ShopName,
-                    Food_drink: Food_drink || "",
-                    Catagory: Catagory || "",
-                    items: [{ name: "", quantity: 0, total: 0 }]
-                  });
-                
-              
-                console.log("Added shop:", ShopName);
-              },
-         
+
+
+            },
+
+
+            addItems:(state,action)=>{
+                 state.OrderedDetails.items.push(action.payload)
+            },
+            
  
-
 
 
             increaseQuantity :(state,action)=>{
                 const id=action.payload;
-                const item=state.items.find(item=>item.id==id)
-
+                const item=state.items.find((i)=>i.id===id)
+                  
                 if(item){
-                    item.quantity++
+                      item.quantity++ 
+                      
+                }
+
+              
+
                 }
             },
 
-            decrementQuantity:(state,action)=>{
-                const id=action.payload;
-                const item=state.items.find(item=>item.id==id)
+            // decrementQuantity:(state,action)=>{
+            //     const id=action.payload;
+            //     const item=state.items.find(item=>item.id==id)
 
-                if(item){
-                    item.quantity++
-                }
+            //     if(item){
+            //         item.quantity++
+            //     }
 
-            }
-            ,
+            // }
+            // ,
             
 
         }
-    })
+    )
 
-    export const {increaseQuantity,decrementQuantity,setOrderedDetails}=foodDrinkSlice.actions
+    export const {increaseQuantity,setOrderedDetails,addItems}=foodDrinkSlice.actions
     export default foodDrinkSlice.reducer

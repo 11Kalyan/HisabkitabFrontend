@@ -2,6 +2,8 @@ import * as React from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { HardSoft } from "./miniComponents/Hard_soft"
 import {
   Card,
   CardContent,
@@ -17,10 +19,17 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-const Menuform = () => {
+const Drinkmenu = ({setDrinkFood}) => {
   return (
     <div className="flex justify-center w-full mt-[10%]">
       <div className="w-[80%]">
+
+           <Button  className="w-[5em] h-[3em]"
+           onClick={()=>setDrinkFood("food")}
+           >
+              Food
+            </Button>
+
         <Card>
           <CardHeader>
             <CardTitle>Add Menu</CardTitle>
@@ -30,26 +39,13 @@ const Menuform = () => {
             <form className="flex flex-col gap-4">
               {/* Foodname Input */}
               <div className="flex flex-col gap-2">
-                <Label htmlFor="foodname">Foodname</Label>
-                <Input id="foodname" placeholder="Chowmin" />
+                <Label htmlFor="drinkName">Drinkname</Label>
+                <Input id="coca-cola" placeholder="Coca-cola" />
               </div>
 
-              {/* Category Select */}
-              <div className="flex flex-col gap-2">
-                <Label htmlFor="category">Category</Label>
-                <Select>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select category" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="chicken">Chicken</SelectItem>
-                    <SelectItem value="buff">Buff</SelectItem>
-                    <SelectItem value="pork">Pork</SelectItem>
-                    <SelectItem value="veg">Veg</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              <HardSoft/>
 
+             
               {/* Price Input */}
               <div className="flex flex-col gap-2">
                 <Label htmlFor="price">Price</Label>
@@ -57,7 +53,14 @@ const Menuform = () => {
               </div>
             </form>
           </CardContent>
-
+      <div className="flex flex-col gap-2">
+          <Textarea 
+          
+        id="message" 
+        placeholder="Type your message here..." 
+        className="w-[95%] " 
+      />
+ </div>
           <CardFooter className="flex-col gap-2">
             <Button type="submit" className="w-full">
               Add
@@ -69,4 +72,4 @@ const Menuform = () => {
   )
 }
 
-export default Menuform
+export default Drinkmenu

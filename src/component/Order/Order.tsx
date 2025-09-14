@@ -12,6 +12,7 @@ const Order = () => {
   const [type,setType]=useState("")
 
 
+
   return (
     <>
       <div className="w-full flex flex-col">
@@ -30,7 +31,7 @@ const Order = () => {
         </div>
 
         <div className="mt-10 flex justify-center items-center w-[90%] ">
-          <FoodCard  selectcategory={selectcategory}/>
+          <FoodCard  selectcategory={selectcategory} type={type}/>
         </div>
 
 

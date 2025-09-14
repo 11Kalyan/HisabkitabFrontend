@@ -34,6 +34,7 @@ const OrderedPlace = () => {
   const OrderedDetails = useSelector((state: RootState) => state.foodDrink.OrderedDetails)
 
 
+
   React.useEffect(()=>{
     console.log(OrderedDetails)
  
@@ -64,7 +65,8 @@ const OrderedPlace = () => {
                     key={shop.id || index}
                     value={shop.name}
                     onSelect={() => {
-                      dispatch(setOrderedDetails({ ShopName: shop.name }));
+                      setSelectedShop(shop?.name)
+                      dispatch(setOrderedDetails({ id: shop.id, name:shop?.name }));
                     }}
                     
                   >

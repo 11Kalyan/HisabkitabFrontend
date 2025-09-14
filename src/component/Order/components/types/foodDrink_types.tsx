@@ -5,6 +5,7 @@ export interface foodDrinkTypes {
     price:number,
     quantity:number,
     catagory:string,
+    type:string
  
 }
 
@@ -14,17 +15,17 @@ export interface shopName{
 }
 
 export interface Fooditems{
-   
+    id:number,
     name:string,
     quantity:number
     total:number
+    catagory:string,
+    food_drink: string
 }
 
 export interface OrderDetailsArray{
-    ShopName:string,
-    Food_drink:string,
-    Catagory:string,
-
+     id:number, 
+     sname:string
     items:Fooditems[],
   
 }
@@ -32,7 +33,7 @@ export interface OrderDetailsArray{
 
 export interface foodDrink_items{
     items:foodDrinkTypes[]
-    OrderedDetails:OrderDetailsArray[]
+    OrderedDetails:OrderDetailsArray
     shopname:shopName[]
     
 }

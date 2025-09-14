@@ -14,14 +14,22 @@ const FoodDrink = ({type,setType}) => {
         <div className='w-[10em] flex justify-around'>
             <div>
                  <Button
-                   onClick={()=>dispatch(setOrderedDetails({Food_drink:"food"}))}
+                   onClick={()=>
+                   {
+                    setType("food")
+                    dispatch(setOrderedDetails({Food_drink:"food"}))
+                   }}
                  >Food</Button>
             </div>
 
             <div>
             
                  <Button
-                   onClick={()=>dispatch(setOrderedDetails({Food_drink:"drink"}))}
+                   onClick={()=>{
+                    setType("drink")
+                    dispatch(setOrderedDetails({Food_drink:"drink"}))}
+                   }
+                  
                  >Drink</Button>
             </div>
         </div>

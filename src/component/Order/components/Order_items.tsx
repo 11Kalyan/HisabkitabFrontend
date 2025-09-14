@@ -29,20 +29,20 @@ const OrderedItems = () => {
      
   
 
-    {
+    {/* {
       OrderedDetails.map((item,index)=>(
         
         <div 
         key={index}
         className="w-[95%] max-w-md mx-auto bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm">
         <div className="flex items-center justify-between text-sm text-gray-800">
-          {/* Left section: name & price */}
+      
           <div>
             <div className="font-semibold text-base">{item?.name}</div>
             <div className="text-gray-500">{item?.quantity}</div>
           </div>
   
-         =
+         
           <div className="flex items-center gap-2">
             
            
@@ -58,7 +58,7 @@ const OrderedItems = () => {
       </div>
 
       ))
-    }
+    } */}
 
   <div className='w-full flex justify-center mt-5'>
    <div>
