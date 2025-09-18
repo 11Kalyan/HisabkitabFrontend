@@ -4,9 +4,12 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setOrderedDetails } from "./Slice/Food_Drink_slice";
+import { TbListDetails } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
+
 
 const Foodcatagory = ({ selectcategory, setSelectCatagory }) => {
-
+  const navigate= useNavigate()
   const dispatch = useDispatch()
 
   const handleCategory =(category:string)=>(
@@ -47,6 +50,14 @@ const Foodcatagory = ({ selectcategory, setSelectCatagory }) => {
           handleCategory("mutton")}
         }
         >Mutton</Button>
+      </div>
+
+      <div>
+        <Button 
+         onClick={()=>{
+          navigate('/view_orderd_page')  
+        }}
+        ><TbListDetails bg-color="black"  /></Button>
       </div>
     </div>
   );

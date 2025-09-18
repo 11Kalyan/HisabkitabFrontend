@@ -17,6 +17,8 @@ import Dashboard from './component/Dashboard/Dashboard'
 import Menu from './component/Menu/Menu'
 import Shop from './component/Shop/Shop'
 import Order from './component/Order/Order'
+import ViewOrder from './component/Order/components/ViewOrderList/View_order_list'
+
 
 
 
@@ -34,7 +36,8 @@ function App() {
 
       <Route path='/menu' element={<Menu/>}></Route>
       <Route path='/order' element={<Order/>}></Route>
-       <Route path='/shop'  element={<Shop/>}></Route>
+      <Route path='/shop'  element={<Shop/>}></Route>
+      <Route path='/view_orderd_page' element={<ViewOrder/>}></Route>
 
          
       </Route>
